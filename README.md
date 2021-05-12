@@ -2,6 +2,7 @@
 Based on **[Borewit/readable-web-to-node-stream](https://github.com/Borewit/readable-web-to-node-stream)**.
 
 # Example
+## Web streams to node stream
 
 ```js
 import Converter from "https://deno.land/x/streamconv/mod.ts";
@@ -9,20 +10,24 @@ import Converter from "https://deno.land/x/streamconv/mod.ts";
 const res = await fetch("https://mysite.com");
 
 if (res.body) {
-    const stream = new Converter(res.body); // Readable stream instance
+    const stream = Converter.WebToReadable(res.body); // Readable stream instance
     stream.on("data", chunk => console.log(chunk.toString()));
 } else {
     console.log("no stream");
 }
 ```
 
-# License
-(The MIT License)
+## Node stream to web stream
 
-Copyright (c) 2019 Borewit
+```js
+import Converter from "https://deno.land/x/streamconv/mod.ts";
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+const res = await fetch("https://mysite.com");
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+if (res.body) {
+    const stream = Converter.WebToReadable(res.body);
+    const webstream = Converter.WebToReadable(stream); // web ReadableStream instance
+} else {
+    console.log("no stream");
+}
+```
