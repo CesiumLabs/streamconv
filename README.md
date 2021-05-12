@@ -26,7 +26,7 @@ const res = await fetch("https://mysite.com");
 
 if (res.body) {
     const stream = Converter.WebToReadable(res.body);
-    const webstream = Converter.WebToReadable(stream); // web ReadableStream instance
+    const webstream = Converter.ReadableToWeb(stream); // web ReadableStream instance
 } else {
     console.log("no stream");
 }
