@@ -1,5 +1,5 @@
 # StreamConv
-Based on **[Borewit/readable-web-to-node-stream](https://github.com/Borewit/readable-web-to-node-stream)**.
+Node.js stream to Web stream and vice versa.
 
 # Example
 ## Web streams to node stream
