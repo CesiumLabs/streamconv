@@ -1,7 +1,13 @@
+# Credit
+
+All credit belongs to the original [streamconv](https://github.com/CesiumLabs/streamconv). We are just applying some latest Deno Node specifiers.
+
 # StreamConv
+
 Node.js stream to Web stream and vice versa.
 
 # Example
+
 ## Web streams to node stream
 
 ```js
